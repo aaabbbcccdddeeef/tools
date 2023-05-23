@@ -1,0 +1,11 @@
+import socket
+
+ip_address = "31.65.96.78"
+
+ip_int = int(socket.inet_aton(ip_address).hex(), 16)
+
+zero_int = int(socket.inet_aton("0.0.0.0").hex(), 16)
+
+converted_ip = socket.inet_ntoa(hex(ip_int & zero_int)[2:].zfill(8).encode("utf-8"))
+
+print(converted_ip)  # 输出：0.0.0.0
